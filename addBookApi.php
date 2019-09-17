@@ -69,7 +69,7 @@
                     }else{
                         $msg = "IMAGE NOT UPLOAD";
                     }
-                    echo "<script>location.href='showBooks.php?message=Successfully Added and $msg'</script>";
+                    echo "<script>location.href='showBooks.php?message=Successfully Added and $msg&page=1'</script>";
                 /*
                  true when add book button is clicked
                  then add book in database
@@ -92,7 +92,7 @@
                     }else{
                         $msg = "IMAGE NOT UPLOAD";
                     }
-                    echo "<script>location.href='showBooks.php?message=Successfully Edited and $msg'</script>";
+                    echo "<script>location.href='showBooks.php?message=Successfully Edited and $msg&page=1'</script>";
                 }
             }catch (Exception $e){
                 echo $e->getMessage();

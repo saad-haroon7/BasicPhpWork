@@ -1,18 +1,11 @@
 <?php include 'dbConnection.php'; ?>
 <?php
+    $errMsg = "";
     $flag = true;
     $bookName = $_POST['bookName'];
     $bookPublisher = $_POST['bookPublisher'];
     $bookIsbn = $_POST['bookIsbn'];
     $bookCover = $_FILES['bookCover']['name'];
-    /*
-        Return to the add book form after displaying message
-     */
-    function redirectToBookForm($msg){
-        echo "<script type='text/javascript'> alert('$msg'); 
-                 window.location.href='addBook.php';</script>";
-    }
-
     /*
         Return to the show books page after displaying message
      */
@@ -26,28 +19,28 @@
     function validateBookForm() {
         if($GLOBALS['bookName'] == ""){
             $GLOBALS['flag'] = false;
-            redirectToBookForm("Insert Book Name");
+            $GLOBALS["errMsg"] = "*Insert Book Name";
         }elseif (!preg_match("/^[a-zA-Z ]*$/",$GLOBALS['bookName'])){
             $GLOBALS['flag'] = false;
-            redirectToBookForm("Only Alphabets and White Space allowed in Book Name");
+            $GLOBALS["errMsg"] = "*Only Alphabets and White Space allowed in Book Name";
         }
         if($GLOBALS['bookPublisher'] == ""){
             $GLOBALS['flag'] = false;
-            redirectToBookForm("Insert Book Publisher");
+            $GLOBALS["errMsg"] = "*Insert Book Publisher";
         }elseif (!preg_match("/^[a-zA-Z ]*$/",$GLOBALS['bookPublisher'])){
             $GLOBALS['flag'] = false;
-            redirectToBookForm("Only Alphabets and White Space allowed in Book Publisher");
+            $GLOBALS["errMsg"] = "*Only Alphabets and White Space allowed in Book Publisher";
         }
         if($GLOBALS['bookIsbn'] == ""){
             $GLOBALS['flag'] = false;
-            redirectToBookForm("Insert Book ISBN");
+            $GLOBALS["errMsg"] = "*Insert Book ISBN";
         }elseif (!preg_match("/^[0-9]*$/",$GLOBALS['bookIsbn'])){
             $GLOBALS['flag'] = false;
-            redirectToBookForm("Only Numbers are allowed in ISBN");
+            $GLOBALS["errMsg"] = "*Only Numbers are allowed in ISBN";
         }
         if($GLOBALS['bookCover'] == ""){
             $GLOBALS['flag'] = false;
-            redirectToBookForm("Upload Book Cover");
+            $GLOBALS["errMsg"] = "*Upload Book Cover";
         }
     }
     if (!empty($_POST)){
@@ -76,7 +69,7 @@
                     }else{
                         $msg = "IMAGE NOT UPLOAD";
                     }
-                    redirectToShowBooks("BOOK ADDED SUCCESSFULLY AND ".$msg);
+                    echo "<script>location.href='showBooks.php?message=Successfully Added and $msg'</script>";
                 /*
                  true when add book button is clicked
                  then add book in database
@@ -99,7 +92,7 @@
                     }else{
                         $msg = "IMAGE NOT UPLOAD";
                     }
-                    redirectToShowBooks("BOOK UPDATED");
+                    echo "<script>location.href='showBooks.php?message=Successfully Edited and $msg'</script>";
                 }
             }catch (Exception $e){
                 echo $e->getMessage();

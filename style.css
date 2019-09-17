@@ -2,27 +2,31 @@ body{
     background-color: rgba(62,0,173,0.05);
 }
 
-h2 {
+h1 {
     display: block;
     width: max-content;
-    margin: 9px 16px 0;
-    text-align: left;
-    border-bottom: 2px solid darkgrey;
-    color: darkgrey;
-}
-
-caption {
-    font: bold x-large arial;
+    text-align: center;
+    font: bold xx-large arial;
     color: orange;
     text-shadow: 3px 2px 4px darkgrey;
+    margin: 8px 0px 16px 0px;
 }
-
+.formsHeading {
+    margin: auto;
+    width: 140px;
+    padding: 6px 0px 0px 0px;
+}
+.listingHeading {
+    margin: auto;
+    width: 292px;
+}
 input[type="search"] {
     padding: 7px;
-    margin: 8px 11px 0px 15px;
+    margin: 2px 0px 9px 0px;
     border-radius: 3px;
     font: normal 16px arial;
     border: 1px solid darkgray;
+    float: right;
 }
 
 #cover{
@@ -48,8 +52,9 @@ form#searchForm {
     display: inline;
 }
 
+
 .toCenter{
-    margin: 50px auto;
+    margin: 30px auto;
     width: 400px;
     height: max-content;
     border: 2px solid darkgrey;
@@ -65,7 +70,7 @@ form#searchForm {
     border-radius: 10px;
     box-shadow: 7px 7px 4px lightgrey;
     background-color: white;
-    /*background-color: rgba(62,0,173,0.08);*/
+    padding: 15px;
 }
 .addBook {
     text-align: center;
@@ -74,7 +79,7 @@ form#searchForm {
 .addBook input{
     padding: 10px;
     margin: 10px;
-    width: 90%;
+    width: 88%;
     border: 1px solid darkgrey;
     border-radius: 5px;
     box-shadow: 1px 1px 2px lightgrey;
@@ -82,10 +87,10 @@ form#searchForm {
 
 
 .booksTable {
-    margin: 15px;
+    margin: 2px 2px;
     border-collapse: collapse;
     text-align: left;
-
+    width: 100%;
 }
 
 .booksTable th, .booksTable td {
@@ -130,31 +135,71 @@ a.btnEdit {
 }
 .btnAdd {
     background-color: rgba(255,123,21,0.85);
-        color: white;
+    color: white;
     float: right;
-    margin: 8px 11px 0px 15px;
+    margin: 0 11px 0px 15px;
     padding: 9px;
 }
 
 
 .pagination {
+    margin: 7px auto 0px;
     text-align: center;
-    width: 100%;
+    width: 75%;
+    height: 28px;
+    padding: 0;
+    border-radius: 20px;
+    background-color: rgba(255,123,21,0.85);
 }
-
-.pageLinks {
-    border: 1px solid gray;
-    background-color: rgba(255,98,21,0.08);
-    box-shadow: 1px 1px 4px gray;
-    font: normal large Courier;
-    margin: 7px;
+.pageNavigation, .pageLinks {
+    font: normal small Courier;
     padding: 7px;
     display:inline-block;
-    width: 20px;
-    height: 15px;
+    width: 35px;
+    height: 14px;
     text-align: center;
+    color: white;
+}
+.pageLinks {
+    width: 10px;
 }
 
-.pageLinks:hover, .pageLinks:link, .pageLinks:visited, .pageLinks:active {
+.showListing:hover,
+.pageLinks:link, .pageNavigation:link, .showListing:link,
+.pageLinks:visited, .pageNavigation:visited, .showListing:visited,
+.pageLinks:active, .pageNavigation:active, .showListing:active {
     text-decoration: none;
+}
+.pageLinks:hover, .pageNavigation:hover {
+    background-color: rgba(255,123,21,1);
+}
+.errorMessage {
+    color: red;
+}
+.successMessage {
+    color: green;
+}
+a.showListing {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    text-decoration: none;
+    font: large arial;
+    border-radius: 10px;
+    color: #333333;
+    background-color: rgba(255,123,21,0.85);
+    padding: 5px;
+    border-top: 1px solid #CCCCCC;
+    border-right: 1px solid #333333;
+    border-bottom: 1px solid #333333;
+    border-left: 1px solid #CCCCCC;
+    box-shadow: 1px 1px 2px lightgrey;
+}
+.asterisk_input:after {
+    content: " *";
+    color: #e32;
+    position: absolute;
+    margin: 20px 0px 0px -30px;
+    font-size: 17px;
+    padding: 0 5px 0 0;
 }

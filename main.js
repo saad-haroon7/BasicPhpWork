@@ -33,7 +33,8 @@ $(function(){
                 type: "POST",
                 url: "deleteBook.php",
                 data: { "bookId": $(this).attr('id')},
-                success: function () {
+                success: function (e) {
+                    alert(e);
                 }
             });
             $(this).parents("tr").remove();

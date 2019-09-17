@@ -17,6 +17,11 @@
             echo $e->getMessage();
         }
         $conn = null;
+    }elseif ((!empty($_POST)) AND (!$flag)){
+        $result[0]['Book'] = $_POST['bookName'];
+        $result[0]['Publisher'] = $_POST['bookPublisher'];
+        $result[0]['ISBN'] = $_POST['bookIsbn'];
+        $result[0]['Cover'] = $_FILES['bookCover']['name'];
     }
 ?>
 <!DOCTYPE html>
@@ -29,21 +34,25 @@
 </head>
 <body>
 <div class="toCenter">
+    <div class="formsHeading">
+        <span class="errorMessage"><?php echo $errMsg ?></span>
+        <h1>Edit Book</h1>
+    </div>
     <form action="<?php $_SERVER["PHP_SELF"]?>" method="POST" class="addBook" enctype="multipart/form-data">
-        <h2>Edit Book</h2><br>
         <img src="img/1.png" width="200" height="200">
-        <input type="text" id="bookName" name="bookName" placeholder="Book Name" value="<?php echo $result[0]['Book'];?>"><br>
+        <input type="text" id="bookName" name="bookName" placeholder="Book Name" value="<?php echo $result[0]['Book'];?>" required><br>
         <span id="bookNameSpan">*Book Name is required<br></span>
-        <input type="text" id="bookPublisher" name="bookPublisher" placeholder="Publisher Name" value="<?php echo $result[0]['Publisher'];?>"><br>
+        <input type="text" id="bookPublisher" name="bookPublisher" placeholder="Publisher Name" value="<?php echo $result[0]['Publisher'];?>" required><br>
         <span id="bookPublisherSpan">*Book Publisher is required<br></span>
-        <input type="text" id="bookIsbn" name="bookIsbn" placeholder="ISBN" maxlength="13" minlength="13" value="<?php echo ($result[0]['ISBN']);?>"><br>
+        <input type="text" id="bookIsbn" name="bookIsbn" placeholder="ISBN" maxlength="13" minlength="13" value="<?php echo ($result[0]['ISBN']);?>" required><br>
         <span id="bookIsbnSpan">*Book ISBN is required<br></span>
-        <input type="file" id="bookCover" name="bookCover" accept="image/*" onchange="readURL(this)"; ?>
+        <input type="file" id="bookCover" name="bookCover" accept="image/*" onchange="readURL(this)" required>
         <img src="<?php echo "images/".$result[0]['Cover']?>" id="cover" width="50"/>
         <span id="bookCoverSpan">*Book Cover is required<br></span>
         <input type="submit" value="Edit" name="editBook" id="edit">
     </form>
 </div>
+    <a href="showBooks.php" class="showListing">Go back</a>
 
 <script src="jquery-3.4.1.min.js"></script>
 <script src="main.js"></script>

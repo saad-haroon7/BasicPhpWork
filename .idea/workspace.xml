@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6c79e1a6-5224-4203-b1f6-c4e1dd41990e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addBook.php" beforeDir="false" afterPath="$PROJECT_DIR$/addBook.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addBookApi.php" beforeDir="false" afterPath="$PROJECT_DIR$/addBookApi.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/editBook.php" beforeDir="false" afterPath="$PROJECT_DIR$/editBook.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/getBooksData.php" beforeDir="false" afterPath="$PROJECT_DIR$/getBooksData.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/showBooks.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
-    </list>
+    <list default="true" id="6c79e1a6-5224-4203-b1f6-c4e1dd41990e" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

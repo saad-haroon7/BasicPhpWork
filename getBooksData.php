@@ -12,7 +12,7 @@ try{
                 /*
                  When person enters empty string in search
                  */
-                echo "<script>location.href='showBooks.php'</script>";
+                echo "<script>location.href='index.php'</script>";
             }
             else{
                 /*
@@ -31,7 +31,7 @@ try{
                     $_GET['page'] = 1;
                     $page = 1;
                     $lowLimit = 0;
-                    $offset = 9;
+                    $offset = 10;
                 }else{
                     $page = $_GET['page'];
                     $lowLimit = ($page - 1) * 10;
@@ -45,7 +45,7 @@ try{
                     }
                     $page = $_GET['page'] ;
                     $searchItem = $_GET['Search'];
-                    echo "<script>location.href='showBooks.php?Search=$searchItem&page=$page'</script>";
+                    echo "<script>location.href='index.php?Search=$searchItem&page=$page'</script>";
                 }
                 if($_GET['prevSec']){
                     if($_GET['page'] == 1){
@@ -55,10 +55,10 @@ try{
                     }
                     $searchItem = $_GET['Search'];
                     $page = $_GET['page'] ;
-                    echo "<script>location.href='showBooks.php?Search=$searchItem&page=$page'</script>";
+                    echo "<script>location.href='index.php?Search=$searchItem&page=$page'</script>";
                 }
                 $stmt = $conn->prepare("SELECT * from books where (Book LIKE '$searchItem') OR (Publisher LIKE '$searchItem') OR (ISBN LIKE '$searchItem') 
-                                        ORDER BY Book 
+                                        ORDER BY Id DESC
                                         LIMIT $lowLimit, $offset");
                 $stmt->bindParam(":bName",$searchItem);
                 $stmt->bindParam(":bPublisher", $searchItem);
@@ -85,7 +85,7 @@ try{
                     $_GET['page'] += 1;
                 }
                 $page = $_GET['page'] ;
-                echo "<script>location.href='showBooks.php?page=$page'</script>";
+                echo "<script>location.href='index.php?page=$page'</script>";
             }
             if($_GET['prevSec']){
                 if($_GET['page'] == 1){
@@ -94,9 +94,9 @@ try{
                     $_GET['page'] -= 1;
                 }
                 $page = $_GET['page'] ;
-                echo "<script>location.href='showBooks.php?page=$page'</script>";
+                echo "<script>location.href='index.php?page=$page'</script>";
             }
-            $stmt = $conn->prepare("SELECT * from books LIMIT $lowLimit,$offset");
+            $stmt = $conn->prepare("SELECT * from books ORDER BY Id DESC LIMIT $lowLimit,$offset");
             $result = $stmt->execute();
             $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
             $result = $stmt->fetchAll();
@@ -114,9 +114,9 @@ try{
             $_GET['page'] = 1;
             $page = 1;
             $lowLimit = 0;
-            $offset = 9;
+            $offset = 10;
         }
-        $stmt = $conn->prepare("SELECT * from books LIMIT $lowLimit,$offset");
+        $stmt = $conn->prepare("SELECT * from books ORDER BY Id DESC LIMIT $lowLimit,$offset");
         $result = $stmt->execute();
         $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
         $result = $stmt->fetchAll();

@@ -2,9 +2,17 @@ body{
     background-color: rgba(62,0,173,0.05);
 }
 
-h1 {
+.formsHeading h1 {
     display: block;
+    text-align: center;
     width: max-content;
+    font: bold xx-large arial;
+    color: orange;
+    text-shadow: 3px 2px 4px darkgrey;
+    margin: 8px 0px 16px 0px;
+}
+.listingHeading h1{
+    display: block;
     text-align: center;
     font: bold xx-large arial;
     color: orange;
@@ -18,7 +26,7 @@ h1 {
 }
 .listingHeading {
     margin: auto;
-    width: 292px;
+    text-align: center;
 }
 input[type="search"] {
     padding: 7px;
@@ -175,6 +183,7 @@ a.btnEdit {
 }
 .errorMessage {
     color: red;
+    font-size: small;
 }
 .successMessage {
     color: green;
@@ -202,4 +211,15 @@ a.showListing {
     margin: 20px 0px 0px -30px;
     font-size: 17px;
     padding: 0 5px 0 0;
+}
+
+.noDataFound {
+    border-radius: 10px;
+    margin: auto;
+    width: fit-content;
+    padding: 20px;
+    text-align: center;
+    font: normal x-large courier;
+    color: red;
+    text-shadow: 2px 2px 5px grey;
 }

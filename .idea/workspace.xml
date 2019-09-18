@@ -3,7 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="6c79e1a6-5224-4203-b1f6-c4e1dd41990e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addBook.php" beforeDir="false" afterPath="$PROJECT_DIR$/addBook.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/addBookApi.php" beforeDir="false" afterPath="$PROJECT_DIR$/addBookApi.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/editBook.php" beforeDir="false" afterPath="$PROJECT_DIR$/editBook.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/getBooksData.php" beforeDir="false" afterPath="$PROJECT_DIR$/getBooksData.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/showBooks.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -74,7 +80,7 @@
     <configuration name="addBook.php" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/PhpProject/addBook.php" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
-    <configuration name="showBooks.php" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/PhpProject/showBooks.php" useBuiltInWebServerPort="true">
+    <configuration name="index.php" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/PhpProject/index.php" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
     <configuration name="PhpProject" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
@@ -84,7 +90,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="JavaScript Debug.addBook.php" />
-        <item itemvalue="JavaScript Debug.showBooks.php" />
+        <item itemvalue="JavaScript Debug.index.php" />
         <item itemvalue="PHPUnit.PhpProject" />
       </list>
     </recent_temporary>
@@ -117,6 +123,7 @@
       <workItem from="1568695170885" duration="30930000" />
       <workItem from="1568731672616" duration="17000" />
       <workItem from="1568731754188" duration="158000" />
+      <workItem from="1568788128715" duration="9562000" />
     </task>
     <servers />
   </component>

@@ -6,12 +6,13 @@
     $bookPublisher = $_POST['bookPublisher'];
     $bookIsbn = $_POST['bookIsbn'];
     $bookCover = $_FILES['bookCover']['name'];
-    /*
-        Return to the show books page after displaying message
-     */
+
+/*
+    Return to the show books page after displaying message
+ */
     function redirectToShowBooks($msg){
         echo "<script type='text/javascript'> alert('$msg'); 
-                     window.location.href='showBooks.php';</script>";
+                     window.location.href='index.php';</script>";
     }
     /*
      * Do PHP validation for ADD BOOK form
@@ -39,8 +40,12 @@
             $GLOBALS["errMsg"] = "*Only Numbers are allowed in ISBN";
         }
         if($GLOBALS['bookCover'] == ""){
-            $GLOBALS['flag'] = false;
-            $GLOBALS["errMsg"] = "*Upload Book Cover";
+            if(isset($_POST['editBook'])){
+                $GLOBALS['flag'] = true;
+            }else{
+                $GLOBALS['flag'] = false;
+                $GLOBALS["errMsg"] = "*Upload Book Cover";
+            }
         }
     }
     if (!empty($_POST)){
@@ -69,30 +74,46 @@
                     }else{
                         $msg = "IMAGE NOT UPLOAD";
                     }
-                    echo "<script>location.href='showBooks.php?message=Successfully Added and $msg&page=1'</script>";
+                    echo "<script>location.href='index.php?message=Successfully Added and $msg&page=1'</script>";
                 /*
                  true when add book button is clicked
                  then add book in database
                  */
                 }elseif(isset($_POST['editBook'])){
-                    $target = "images/".basename($_FILES['bookCover']['name']);
+                    $relPage = $_GET['page'];
                     $id = $_GET['id'];
-                    $stmt = $conn->prepare("UPDATE books SET Book=:bName, Publisher=:bPublisher, ISBN=:bIsbn, Cover=:bCover
+                    if($bookCover == ''){
+                        $stmt = $conn->prepare("UPDATE books SET Book=:bName, Publisher=:bPublisher, ISBN=:bIsbn
                                            WHERE Id=:bId");
-                    $stmt->bindParam(":bName",$bookName);
-                    $stmt->bindParam(":bPublisher", $bookPublisher);
-                    $stmt->bindParam(":bIsbn",$bookIsbn);
-                    $stmt->bindParam(":bCover", $bookCover);
-                    $stmt->bindParam(":bId",$id);
-
-                    $result = $stmt->execute();
-                    $tmp = $_FILES['bookCover']['tmp_name'];
-                    if (move_uploaded_file($tmp, $target)){
-                        $msg = "IMAGE UPLOAD";
-                    }else{
-                        $msg = "IMAGE NOT UPLOAD";
+                        $stmt->bindParam(":bName",$bookName);
+                        $stmt->bindParam(":bPublisher", $bookPublisher);
+                        $stmt->bindParam(":bIsbn",$bookIsbn);
+                        $stmt->bindParam(":bId",$id);
                     }
-                    echo "<script>location.href='showBooks.php?message=Successfully Edited and $msg&page=1'</script>";
+                    else{
+                        $stmt = $conn->prepare("UPDATE books SET Book=:bName, Publisher=:bPublisher, ISBN=:bIsbn, Cover=:bCover
+                                           WHERE Id=:bId");
+                        $stmt->bindParam(":bName",$bookName);
+                        $stmt->bindParam(":bPublisher", $bookPublisher);
+                        $stmt->bindParam(":bIsbn",$bookIsbn);
+                        $stmt->bindParam(":bCover", $bookCover);
+                        $stmt->bindParam(":bId",$id);
+                        /*
+                         * FILE SAVE IN PROJECT
+                         */
+                        $target = "images/".basename($_FILES['bookCover']['name']);
+                        $tmp = $_FILES['bookCover']['tmp_name'];
+                        if (!move_uploaded_file($tmp, $target)){
+                            $msg = " BUT IMAGE NOT UPLOAD";
+                        }
+                    }
+                    $result = $stmt->execute();
+                    $search = $_GET['Search'];
+                    if($search==NULL){
+                        echo "<script>location.href='index.php?message=Successfully Edited $msg&page=$relPage'</script>";
+                    }
+                    else
+                        echo "<script>location.href='index.php?message=Successfully Edited $msg&Search=$search&page=$relPage'</script>";
                 }
             }catch (Exception $e){
                 echo $e->getMessage();

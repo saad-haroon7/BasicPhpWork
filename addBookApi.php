@@ -18,6 +18,14 @@
      * Do PHP validation for ADD BOOK form
      */
     function validateBookForm() {
+        if($GLOBALS['bookCover'] == ""){
+            if(isset($_POST['editBook'])){
+                $GLOBALS['flag'] = true;
+            }else{
+                $GLOBALS['flag'] = false;
+                $GLOBALS["errMsg"] = "*Upload Book Cover";
+            }
+        }
         if($GLOBALS['bookName'] == ""){
             $GLOBALS['flag'] = false;
             $GLOBALS["errMsg"] = "*Insert Book Name";
@@ -38,14 +46,6 @@
         }elseif (!preg_match("/^[0-9]*$/",$GLOBALS['bookIsbn'])){
             $GLOBALS['flag'] = false;
             $GLOBALS["errMsg"] = "*Only Numbers are allowed in ISBN";
-        }
-        if($GLOBALS['bookCover'] == ""){
-            if(isset($_POST['editBook'])){
-                $GLOBALS['flag'] = true;
-            }else{
-                $GLOBALS['flag'] = false;
-                $GLOBALS["errMsg"] = "*Upload Book Cover";
-            }
         }
     }
     if (!empty($_POST)){

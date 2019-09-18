@@ -11,11 +11,16 @@
 <body>
 <div class="toCenter">
     <div class="formsHeading">
-        <span class="errorMessage"><?php echo $errMsg ?></span>
         <h1>Add Book</h1>
     </div>
     <form action="<?php $_SERVER["PHP_SELF"]?>" method="POST" class="addBook" id="myForm" enctype="multipart/form-data">
         <img src="img/1.png" width="200" height="200">
+
+        <div>
+            <span class="errorMessage"><?php echo $errMsg ?></span>
+
+        </div>
+
         <div>
             <input type="text" id="bookName" name="bookName" placeholder="Book Name" value="<?php echo $_POST['bookName']?>" required>
             <span class="asterisk_input">  </span>
@@ -44,7 +49,7 @@
         <input type="submit" value="Add Book" name="addBook" id="add">
     </form>
 </div>
-    <a href="showBooks.php" class="showListing">Go back</a>
+    <a href="index.php" class="showListing">Go back</a>
 
 <script src="jquery-3.4.1.min.js"></script>
 <script src="main.js"></script>

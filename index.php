@@ -78,11 +78,22 @@
                     <a href="index.php?page=<?php echo $i ?>" class="pageLinks"><?php echo $i ?></a>
         <?php       }
                 }else {
-                    if($_GET['Search']){ ?>
-                        <a href="index.php?Search=<?php echo $_GET['Search'] ?>&page=<?php echo $i ?>" style="display: none" class="pageLinks"><?php echo $i ?></a>
-                    <?php }else {?>
-                        <a href="index.php?page=<?php echo $i ?>" style="display: none" class="pageLinks"><?php echo $i ?></a>
-        <?php        }
+                    if($page >= $noOfPages-8 AND $i >= $noOfPages-8) {
+                        if ($_GET['Search']) { ?>
+                            <a href="index.php?Search=<?php echo $_GET['Search'] ?>&page=<?php echo $i ?>"
+                               class="pageLinks"><?php echo $i ?></a>
+                        <?php } else { ?>
+                            <a href="index.php?page=<?php echo $i ?>" class="pageLinks"><?php echo $i ?></a>
+                        <?php }
+                    }
+                    else {
+                        if($_GET['Search']){ ?>
+                            <a href="index.php?Search=<?php echo $_GET['Search'] ?>&page=<?php echo $i ?>" style="display: none" class="pageLinks"><?php echo $i ?></a>
+                        <?php }
+                        else { ?>
+                            <a href="index.php?page=<?php echo $i ?>" style="display: none" class="pageLinks"><?php echo $i ?></a>
+                  <?php }
+                    }
                 }
             } ?>
                 <?php if($_GET['Search']){ ?>
